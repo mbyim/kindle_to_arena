@@ -131,7 +131,7 @@ fn parse_note(note: &str)-> Result<Note, &str> { //might need to change to resul
 fn get_last_added() -> Result<DateTime<Utc>, Box<dyn std::error::Error>> {
     let client = reqwest::blocking::Client::new();
     let resp = client.get("https://api.are.na/v2/channels/all-kindle-highlights-notes")
-                        .bearer_auth("8626b72f9df98b7b4cf9aa20b6b52793a69b2d1d29409314dc4e371be9ff1f01")
+                        .bearer_auth("")
                         .send()?; //not sure why i can't use json here
     let data: Value = serde_json::from_str(&resp.text()?).unwrap();
     let date = data["added_to_at"].as_str();
@@ -155,7 +155,7 @@ fn post_to_arena(client: &reqwest::blocking::Client, block: &str) { //&requwest
     params.insert("content", block);//block
     //make call
     let postcall = client.post(url)
-                .bearer_auth("8626b72f9df98b7b4cf9aa20b6b52793a69b2d1d29409314dc4e371be9ff1f01")
+                .bearer_auth("")
                 .form(&params)
                 .send();
     //println!("{:?}", postcall.status());
