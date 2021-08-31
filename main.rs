@@ -145,8 +145,6 @@ fn get_last_added() -> Result<DateTime<Utc>, Box<dyn std::error::Error>> {
 }
 
 
-//app access token: a75bc0424d821090d622995c1873561d835028755e612ba26c057ffa637e35bf
-//personal access token: 8626b72f9df98b7b4cf9aa20b6b52793a69b2d1d29409314dc4e371be9ff1f01
 fn post_to_arena(client: &reqwest::blocking::Client, block: &str) { //&requwest
     //construct call
     let url = "https://api.are.na/v2/channels/all-kindle-highlights-notes/blocks";
